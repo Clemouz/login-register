@@ -15,7 +15,7 @@ if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['email'])) {
 	<link rel="stylesheet" type="text/css" href="connexion.css">
 </head>
 <body>
-	<h1>Le petit bac</h1>
+	<h1>Le petit bac clement</h1>
 	<form method="POST" action="register.php">
 		<h2>Inscription</h2>
 		<label for="nom">Nom :</label>
