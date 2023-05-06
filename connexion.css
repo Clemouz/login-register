@@ -1,10 +1,148 @@
-* {
-    padding: none;
-    margin: none;
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('fonts/Montserrat-Bold.ttf');
+    font-weight: 800;
+  }
+  
+  @font-face {
+    font-family: 'Montserrat-Black';
+    src: url('fonts/Montserrat-Black.ttf');
+    font-weight: 900;
+  }
+  
+  @font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('fonts/Montserrat-Medium.ttf');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'Montserrat-Light';
+    src: url('fonts/Montserrat-Light.ttf');
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: 'Montserrat-Thin';
+    src: url('fonts/Montserrat-Thin.ttf');
+    font-weight: 500;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
 }
 
 body {
+    border: none;
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.header {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: none;
+    top: 0;
+    left: 0;
+    height: fit-content
+}
+.form {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    background-color: none;
+    padding: 0;
+    margin: 0;
+    max-height: 70vh; /* définir une hauteur maximale pour éviter que le formulaire ne soit trop long */
+    overflow-y: auto; /* ajouter une barre de défilement si nécessaire */
+}
+
+.regles {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    background-color: none;
+    padding-left: 5%;
+}
+h1 {
+    font-family: 'Montserrat-Black';
+    font-weight: 900;
+    font-size: 36px;
+}
+h2 {
+    font-family: 'Montserrat-Bold';
+    font-weight: 800;
+    font-size: 32px;
+}
+
+h3 {
+    font-family: 'Montserrat-Medium';
+    font-weight: 700;
+    font-size: 24px;
+}
+
+p {
+    font-family: 'Montserrat-Light';
+    font-weight: 600;
+    font-size: 20px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 100%; /* définir une largeur de 100% pour le formulaire */
+  max-width: 600px; /* définir une largeur maximale pour le formulaire */
+  margin: 0 auto; /* centrer le formulaire horizontalement */
+  overflow: hidden; /* supprimer le défilement du formulaire */
+}
+
+form h2 {
+  font-family: 'Montserrat-Bold', sans-serif;
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+form p {
+  font-family: 'Montserrat-Medium', sans-serif;
+  font-size: 16px;
+  margin: 10px 0;
+  text-align: left; /* aligner les paragraphes à gauche */
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+}
+
+form input[type="submit"],
+form button[type="button"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Montserrat-Bold', sans-serif;
+  font-size: 18px;
+  width: 49%; /* donner la même largeur aux deux boutons */
+}
+
+form input[type="submit"]:hover,
+form button[type="button"]:hover {
+  background-color: #45a049;
 }
