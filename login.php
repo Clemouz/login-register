@@ -12,7 +12,10 @@ if(isset($_POST['submit'])) {
             exit();
         }
     }
-    echo "L'email ou le mot de passe est incorrect";
+    session_start();
+    $_SESSION['error'] = "L'email ou le mot de passe est incorrect";
+    header("Location: index.php");
+    exit();
 }
 ?>
 

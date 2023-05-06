@@ -10,10 +10,9 @@ if (!isset($_SESSION['email'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Le petit Bac</title>
+	<title>Le petit Bac | Salon d'attente</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="connexion.css">
-
 </head>
 <body>
 
@@ -30,30 +29,21 @@ if (!isset($_SESSION['email'])) {
 
 <form action="logout.php" method="POST">
     <input type="submit" name="logout" value="Log out" formnovalidate>
-</form>
 
 </div>
 
 <div id='creerPartie'>
-<form method="POST" action="create_party.php">
-  <input type="text" name="salon" placeholder="Nom de la partie" class="input" autocomplete="off" required><br>
-  <button type="submit"  class='button'>Créer partie</button>
+<form action="create_party.php" method="POST">
+<input type="text" name="salon" placeholder="Nom de la partie" class="input" autocomplete="off" required><br>
+  <button type="submit">Créer une partie</button>
 </form>
 </div>
 
-<?php
-	if(isset($_SESSION['errorSalon'])) {
-		echo '<div class="error">'.$_SESSION['errorSalon'].'</div>';
-		unset($_SESSION['errorSalon']);
-	}
-?>
-
-
-  <div>Rejoindre une partie -</div>
-  <div id='partyContainer'></div>
-
-
-
+<div id='rejoindrePartie'>
+<form action="join_party.php" method="POST">
+  <button type="submit">Rejoindre une partie</button>
+</form>
+</div>
 
 </body>
 </html>
