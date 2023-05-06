@@ -1,36 +1,44 @@
 <?php
 if(isset($_POST['submit'])) {
 
-    $nom = $_POST['nom'];
+    if ($_POST['motdepasse'] !== $_POST['confmotdepasse']) {
+        session_start();
+        $_SESSION['errorRegister'] = "Les mots de passe ne sont pas les mêmes";
+        header("Location: connexion.php");
+        exit();   
+    }
+
+    $pseudo = $_POST['pseudo'];
     $email = $_POST['email'];
     $motdepasse = $_POST['motdepasse'];
 
     if(!file_exists('users.csv')) {
         $file = fopen('users.csv', 'w');
-        fputcsv($file, array('Nom', 'E-mail', 'Mot de passe'));
+        fputcsv($file, array('Pseudo', 'E-mail', 'Mot de passe'));
     } else {
         $file = fopen('users.csv', 'a');
-    }
-
-    $users = array_map('str_getcsv', file('users.csv'));
-    foreach($users as $user) {
-        if($user[1] == $email && $user[2] == $motdepasse) {
-            session_start();
-            $_SESSION['email'] = $email;
-            fclose($file);
-            header("Location: index.php");
-            exit();
-        } elseif ($user[1] == $email) {
-            echo "L'utilisateur avec cette adresse e-mail existe déjà";
-            exit;
+        $users = array_map('str_getcsv', file('users.csv'));
+        foreach($users as $user) {
+            if($email == $user[1]) {
+                session_start();
+                $_SESSION['errorRegister'] = "L'email est déjà utilisé";
+                header("Location: connexion.php");
+                exit();
+            }
         }
     }
 
-    $data = array($nom, $email, $motdepasse);
+    session_start();
+    $_SESSION['email'] = $email;
+
+    try {
+    $data = array($pseudo, $email, $motdepasse);
     fputcsv($file, $data);
     fclose($file);
-
     header("Location: index.php");
+    } catch (Exception $e) {
+        echo "Erreur lors de l'ajout dans la database : " . $e->getMessage();
+    }
     exit();
 }
 ?>
